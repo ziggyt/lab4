@@ -93,6 +93,7 @@ public class PortalConnection {
         } 
     }
 
+
     // This is a hack to turn an SQLException into a JSON string error message. No need to change.
     public static String getError(SQLException e){
        String message = e.getMessage();

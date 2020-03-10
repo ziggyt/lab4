@@ -11,25 +11,40 @@ public class TestPortal {
 
             // Write your tests here. Add/remove calls to pause() as desired.
             // Use println instead of prettyPrint to get more compact output (if your raw JSON is already readable)
-
-           // prettyPrint(c.getInfo("2222222222"));
-           // pause();
-
-
+            //List info for a student.
+            prettyPrint(c.getInfo("2222222222"));
+            pause();
+            //Register the student for an unrestricted course, and show that they end up registered (show info again).
+            System.out.println(c.register("2222222222", "CCC111"));
+            prettyPrint(c.getInfo("2222222222"));
+            pause();
+            //Register the same student for the same course again, and show that you get an error response.
             System.out.println(c.register("2222222222", "CCC111"));
             pause();
-
-
+            //Unregister the student from the course, and then unregister again from the same course. Show that the student is no longer registered and the second unregistration gives an error response.
+            System.out.println(c.unregister("2222222222", "CCC111"));
             System.out.println(c.unregister("2222222222", "CCC111"));
             pause();
 
-            /*
+            //Register the student for a course that they don't have the prerequisites for, and show that an error is generated.
+            System.out.println(c.unregister("2222222222", "CCC333"));
+            pause();
 
+            //Unregister a student from a restricted course that they are registered to, and which has at least two students in the queue. Register again to the same course and show that the student gets the correct (last) position in the waiting list.
 
+            System.out.println(c.unregister("2222222222", "CCC888"));
+            System.out.println(c.register("2222222222", "CCC888"));
+            pause();
 
-            prettyPrint(c.getInfo("2222222222"));
+            //Unregister and re-register the same student for the same restricted course, and show that the student is first removed and then ends up in the same position as before (last).
+            System.out.println(c.unregister("2222222222", "CCC888"));
+            System.out.println(c.register("2222222222", "CCC888"));
+            pause();
 
-             */
+            //TODO denna är kanske inte helt klar
+            //Unregister a student from an overfull course, i.e. one with more students registered than there are places on the course (you need to set this situation up in the database directly). Show that no student was moved from the queue to being registered as a result.
+            System.out.println(c.unregister("2222222222", "CCC222"));
+            System.out.println(c.register("2222222222", "CCC222"));
 
 
         } catch (ClassNotFoundException e) {
