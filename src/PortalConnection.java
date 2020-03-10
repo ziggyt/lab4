@@ -36,7 +36,7 @@ public class PortalConnection {
     public String register(String student, String courseCode){
 
         try {
-            PreparedStatement st = conn.prepareStatement("INSERT INTO Registrations(student, course) VALUES (?, ?)");
+            PreparedStatement st = conn.prepareStatement("INSERT INTO Registrations VALUES (?, ?)");
 
             st.setString(1, student);
             st.setString(2, courseCode);
@@ -56,7 +56,13 @@ public class PortalConnection {
     public String unregister(String student, String courseCode){
 
         try {
-            conn.prepareStatement("DELETE FROM Registrations WHERE student = student AND course = courseCode");
+            PreparedStatement st = conn.prepareStatement("DELETE FROM Registrations WHERE student = ? AND course = ?");
+
+            st.setString(1, student);
+            st.setString(2, courseCode);
+
+            st.execute();
+
 
         } catch (SQLException e){
 
@@ -86,6 +92,7 @@ public class PortalConnection {
             
         } 
     }
+
 
     // This is a hack to turn an SQLException into a JSON string error message. No need to change.
     public static String getError(SQLException e){
