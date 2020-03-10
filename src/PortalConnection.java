@@ -7,7 +7,7 @@ public class PortalConnection {
     // For connecting to the portal database on your local machine
     static final String DATABASE = "jdbc:postgresql://localhost/portal";
     static final String USERNAME = "postgres";
-    static final String PASSWORD = "lol";
+    static final String PASSWORD = "postgres";
 
     // For connecting to the chalmers database server (from inside chalmers)
     // static final String DATABASE = "jdbc:postgresql://ate.ita.chalmers.se/";
@@ -72,7 +72,7 @@ public class PortalConnection {
         
         try(PreparedStatement st = conn.prepareStatement(
             // replace this with something more useful
-            "SELECT jsonb_build_object('student',idnr,'name',name) AS jsondata FROM BasicInformation WHERE idnr=?"
+            "SELECT jsonb_build_object('student',idnr, 'name',name, 'login',login, 'program',program, 'branch',branch) AS jsondata FROM BasicInformation NATURAL JOIN Taken WHERE idnr=?"
             );){
             
             st.setString(1, student);
