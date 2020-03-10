@@ -78,7 +78,7 @@ public class PortalConnection {
         
         try(PreparedStatement st = conn.prepareStatement(
             // replace this with something more useful
-            "SELECT jsonb_build_object('student',idnr, 'name',name, 'login',login, 'program',program, 'branch',branch) AS jsondata FROM BasicInformation NATURAL JOIN Taken WHERE idnr=?"
+            "SELECT jsonb_build_object('student',idnr, 'name',name, 'login',login, 'program',program, 'branch',branch, 'seminarCourses',seminarcourses, 'mathCredits',mathcredits, 'researchCredits',researchcredits, 'totalCredits',totalcredits, 'canGraduate',qualified ) AS jsondata FROM BasicInformation JOIN PathToGraduation on student=idnr WHERE idnr=?"
             );){
             
             st.setString(1, student);
