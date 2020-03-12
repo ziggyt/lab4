@@ -11,6 +11,7 @@ public class TestPortal {
 
             // Write your tests here. Add/remove calls to pause() as desired.
             // Use println instead of prettyPrint to get more compact output (if your raw JSON is already readable)
+
             //List info for a student.
             prettyPrint(c.getInfo("2222222222"));
             pause();
@@ -41,7 +42,6 @@ public class TestPortal {
             System.out.println(c.register("2222222222", "CCC888"));
             pause();
 
-            //TODO denna är kanske inte helt klar
             //Unregister a student from an overfull course, i.e. one with more students registered than there are places on the course (you need to set this situation up in the database directly). Show that no student was moved from the queue to being registered as a result.
             System.out.println(c.unregister("2222222222", "CCC222"));
             System.out.println(c.register("2222222222", "CCC222"));
