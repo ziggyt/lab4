@@ -62,12 +62,21 @@ public class PortalConnection {
 
             PreparedStatement st = conn.prepareStatement(sqlInjectionStatement);
 
+
+
+            // commented to enable sql injection vuln
+
 //            st.setString(1, student);
 //            st.setString(2, courseCode);
 //
            // System.out.println(st.toString());
 
-            st.execute();
+            int res = st.executeUpdate();
+
+            if (res == 0){
+                return "{\"success\":false}";
+            }
+
 
 
         } catch (SQLException e) {
