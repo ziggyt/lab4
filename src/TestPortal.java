@@ -4,6 +4,7 @@ public class TestPortal {
 
     public static void main(String[] args) {
         try {
+
             PortalConnection c = new PortalConnection();
             System.out.println();
 
@@ -42,15 +43,15 @@ public class TestPortal {
             System.out.println("Unregister a student from a restricted course that they are registered to, and which has at least two students in the queue. Register again to the same course and show that the student gets the correct (last) position in the waiting list.");
             System.out.println();
 
-            System.out.println(c.unregister("2222222222", "CCC888"));
-            System.out.println(c.register("2222222222", "CCC888"));
+            System.out.println(c.unregister("1111111111", "CCC666"));
+            System.out.println(c.register("1111111111", "CCC666"));
             pause();
 
             System.out.println("Unregister and re-register the same student for the same restricted course, and show that the student is first removed and then ends up in the same position as before (last).");
             System.out.println();
 
-            System.out.println(c.unregister("2222222222", "CCC888"));
-            System.out.println(c.register("2222222222", "CCC888"));
+            System.out.println(c.unregister("1111111111", "CCC666"));
+            System.out.println(c.register("1111111111", "CCC666"));
             pause();
 
             System.out.println("Unregister a student from an overfull course, i.e. one with more students registered than there are places on the course (you need to set this situation up in the database directly). Show that no student was moved from the queue to being registered as a result.");

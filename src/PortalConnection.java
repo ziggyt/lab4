@@ -94,7 +94,7 @@ public class PortalConnection {
 
         String query1 = "SELECT jsonb_build_object('finished',jsonb_agg(f1)) AS jsondata FROM (SELECT name AS course,course AS code,grade, credits FROM Taken JOIN Courses ON course=code WHERE student=?) AS f1";
         String query2 = "SELECT jsonb_build_object('student',idnr, 'name',name, 'login',login, 'program',program, 'branch',branch, 'seminarCourses',seminarcourses, 'mathCredits',mathcredits, 'researchCredits',researchcredits, 'totalCredits',totalcredits, 'canGraduate',qualified ) AS jsondata FROM BasicInformation JOIN PathToGraduation on student=idnr WHERE idnr=?";
-        String query3 = "SELECT jsonb_build_object('registered',jsonb_agg(f1)) AS jsondata FROM (SELECT name AS course, code, status, place from coursequeuepositions natural right outer JOIN registrations JOIN Courses on code=course where student=?) AS f1";
+        String query3 = "SELECT jsonb_build_object('registered',jsonb_agg(f1)) AS jsondata FROM (SELECT name AS course, code, status, place AS position from coursequeuepositions natural right outer JOIN registrations JOIN Courses on code=course where student=?) AS f1";
 
         String result1;
         String result2;
